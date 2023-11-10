@@ -8,9 +8,10 @@ import com.truongnhatanh7.productservice.entity.Category;
 import com.truongnhatanh7.productservice.entity.Product;
 import com.truongnhatanh7.productservice.service.ProductService;
 import com.truongnhatanh7.shared.controller.BaseController;
-import com.truongnhatanh7.shared.service.BaseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/api/product")
 @RestController
@@ -37,7 +38,7 @@ public class ProductController extends BaseController<Product, Long, ProductRequ
     }
 
     @PostMapping("/{productId}/component")
-    public ResponseEntity<Product> addComponent(
+    public ResponseEntity<ProductResponse> addComponent(
             @PathVariable(value = "productId") Long productId,
             @RequestBody ProductComponentRequest productComponentRequest
     ) {
@@ -45,10 +46,17 @@ public class ProductController extends BaseController<Product, Long, ProductRequ
     }
 
     @DeleteMapping("/{productId}/component/{componentId}")
-    public ResponseEntity<Void> removeComponnet(
+    public ResponseEntity<Void> removeComponent(
             @PathVariable(value = "productId") Long productId,
             @PathVariable(value = "componentId") Long componentId
     ) {
         return this.service.removeComponenet(productId, componentId);
+    }
+
+    @GetMapping("/{productId}/components")
+    public List<Product> getComponentsOfProduct(
+            @PathVariable(value = "productId") Long productId
+    ) {
+        return this.service.getComponentsOfProduct(productId);
     }
 }

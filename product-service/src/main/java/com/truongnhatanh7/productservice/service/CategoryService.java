@@ -3,14 +3,19 @@ package com.truongnhatanh7.productservice.service;
 import com.truongnhatanh7.productservice.dto.request.CategoryRequest;
 import com.truongnhatanh7.productservice.dto.response.CategoryResponse;
 import com.truongnhatanh7.productservice.entity.Category;
+import com.truongnhatanh7.productservice.repository.CategoryRepository;
 import com.truongnhatanh7.shared.repository.BaseRepository;
 import com.truongnhatanh7.shared.service.BaseService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryService extends BaseService<Category, Long, CategoryRequest, CategoryResponse> {
-    public CategoryService(BaseRepository<Category, Long> repository) {
+    private CategoryRepository categoryRepository;
+    public CategoryService(CategoryRepository repository) {
         super(repository);
+        this.categoryRepository = repository;
     }
 
     @Override
@@ -35,5 +40,9 @@ public class CategoryService extends BaseService<Category, Long, CategoryRequest
                 .id(tInstance.getId())
                 .name(tInstance.getName())
                 .build();
+    }
+
+    public List<Category> getByProductId(Long productId) {
+        return this.categoryRepository.findCategoriesByProductsId(productId);
     }
 }

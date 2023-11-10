@@ -8,12 +8,13 @@ import com.truongnhatanh7.productservice.entity.Category;
 import com.truongnhatanh7.productservice.entity.Product;
 import com.truongnhatanh7.productservice.repository.CategoryRepository;
 import com.truongnhatanh7.productservice.repository.ProductRepository;
-import com.truongnhatanh7.shared.repository.BaseRepository;
 import com.truongnhatanh7.shared.service.BaseService;
 import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProductService extends BaseService<Product, Long, ProductRequest, ProductResponse> {
@@ -101,7 +102,7 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Product> addComponent(
+    public ResponseEntity<ProductResponse> addComponent(
             Long productId,
             ProductComponentRequest productComponentRequest
     ) {
@@ -113,7 +114,7 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
             productRepository.save(product);
             return _component;
         }).orElseThrow(() -> new ResourceNotFoundException("not found"));
-        return new ResponseEntity<>(component, HttpStatus.CREATED);
+        return new ResponseEntity<>(mapOrmToResponse(component), HttpStatus.CREATED);
     }
 
     public ResponseEntity<Void> removeComponenet(Long productId, Long componentId) {
@@ -123,4 +124,10 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
         productRepository.save(product);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    public List<Product> getComponentsOfProduct(Long productId) {
+        return this.productRepository.findComponentsById(productId);
+    }
+
+
 }
