@@ -98,6 +98,9 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
                 .orElseThrow(() -> new ResourceNotFoundException("not found"));
 
         product.removeCategory(categoryId);
+        Category category = categoryRepository.findById(categoryId)
+                        .orElseThrow(() -> new ResourceNotFoundException("not found"));
+        categoryRepository.delete(category);
         productRepository.save(product);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -117,7 +120,7 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
         return new ResponseEntity<>(mapOrmToResponse(component), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Void> removeComponenet(Long productId, Long componentId) {
+    public ResponseEntity<Void> removeComponent(Long productId, Long componentId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("not found"));
         product.removeComponent(componentId);

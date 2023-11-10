@@ -50,7 +50,7 @@ public class ProductController extends BaseController<Product, Long, ProductRequ
             @PathVariable(value = "productId") Long productId,
             @PathVariable(value = "componentId") Long componentId
     ) {
-        return this.service.removeComponenet(productId, componentId);
+        return this.service.removeComponent(productId, componentId);
     }
 
     @GetMapping("/{productId}/components")
