@@ -26,4 +26,12 @@ public class ProductController extends BaseController<Product, Long, ProductRequ
             @RequestBody CategoryRequest categoryRequest) {
         return this.service.addCategory(productId, categoryRequest);
     }
+
+    @DeleteMapping("/{productId}/category/{categoryId}")
+    public ResponseEntity<Void> removeCategory(
+            @PathVariable(value = "productId") Long productId,
+            @PathVariable(value = "categoryId") Long categoryId
+    ) {
+        return this.service.removeCategory(productId, categoryId);
+    }
 }

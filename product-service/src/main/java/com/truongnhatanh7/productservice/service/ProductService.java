@@ -74,8 +74,6 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
                 .description(tInstance.getDescription())
                 .qty(tInstance.getQty())
                 .unitCost(tInstance.getUnitCost())
-                .components(tInstance.getComponents())
-                .categories(tInstance.getCategories())
                 .build();
     }
 
@@ -97,7 +95,16 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
                     .build();
             product.addCategory(_category);
             return categoryRepository.save(_category);
-        }).orElseThrow(() -> new ResourceNotFoundException("not fouud"));
+        }).orElseThrow(() -> new ResourceNotFoundException("not found"));
         return new ResponseEntity<>(category, HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<Void> removeCategory(Long productId, Long categoryId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("not found"));
+
+        product.removeCategory(categoryId);
+        productRepository.save(product);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
