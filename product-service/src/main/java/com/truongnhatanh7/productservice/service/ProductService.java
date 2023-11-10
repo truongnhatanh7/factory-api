@@ -1,6 +1,7 @@
 package com.truongnhatanh7.productservice.service;
 
 import com.truongnhatanh7.productservice.dto.request.CategoryRequest;
+import com.truongnhatanh7.productservice.dto.request.ProductComponentRequest;
 import com.truongnhatanh7.productservice.dto.request.ProductRequest;
 import com.truongnhatanh7.productservice.dto.response.ProductResponse;
 import com.truongnhatanh7.productservice.entity.Category;
@@ -33,8 +34,6 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
                 .description(productRequest.getDescription())
                 .qty(productRequest.getQty())
                 .unitCost(productRequest.getUnitCost())
-                .components(productRequest.getComponents())
-                .categories(productRequest.getCategories())
                 .build();
     }
 
@@ -56,12 +55,6 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
                 .unitCost(productRequest.getUnitCost() == null ?
                         tInstance.getUnitCost() :
                         productRequest.getUnitCost())
-                .components(productRequest.getComponents() == null ?
-                        tInstance.getComponents() :
-                        productRequest.getComponents())
-                .categories(productRequest.getCategories() == null ?
-                        tInstance.getCategories() :
-                        productRequest.getCategories())
                 .build();
     }
 
@@ -104,6 +97,29 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
                 .orElseThrow(() -> new ResourceNotFoundException("not found"));
 
         product.removeCategory(categoryId);
+        productRepository.save(product);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<Product> addComponent(
+            Long productId,
+            ProductComponentRequest productComponentRequest
+    ) {
+        Product component = productRepository.findById(productId).map(product -> {
+            Product _component = productRepository
+                    .findById(productComponentRequest.getId())
+                    .orElseThrow(() -> new ResourceNotFoundException("not found"));
+            product.addComponent(_component);
+            productRepository.save(product);
+            return _component;
+        }).orElseThrow(() -> new ResourceNotFoundException("not found"));
+        return new ResponseEntity<>(component, HttpStatus.CREATED);
+    }
+
+    public ResponseEntity<Void> removeComponenet(Long productId, Long componentId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("not found"));
+        product.removeComponent(componentId);
         productRepository.save(product);
         return new ResponseEntity<>(HttpStatus.OK);
     }

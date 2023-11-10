@@ -21,6 +21,6 @@ public class ProductRequest {
     private Double unitCost;
     private Integer qty;
 
-    private Set<Product> components;
-    private Set<Category> categories;
+//    private Set<Product> components;
+//    private Set<Category> categories;
 }

@@ -1,6 +1,7 @@
 package com.truongnhatanh7.productservice.controller;
 
 import com.truongnhatanh7.productservice.dto.request.CategoryRequest;
+import com.truongnhatanh7.productservice.dto.request.ProductComponentRequest;
 import com.truongnhatanh7.productservice.dto.request.ProductRequest;
 import com.truongnhatanh7.productservice.dto.response.ProductResponse;
 import com.truongnhatanh7.productservice.entity.Category;
@@ -33,5 +34,21 @@ public class ProductController extends BaseController<Product, Long, ProductRequ
             @PathVariable(value = "categoryId") Long categoryId
     ) {
         return this.service.removeCategory(productId, categoryId);
+    }
+
+    @PostMapping("/{productId}/component")
+    public ResponseEntity<Product> addComponent(
+            @PathVariable(value = "productId") Long productId,
+            @RequestBody ProductComponentRequest productComponentRequest
+    ) {
+        return this.service.addComponent(productId, productComponentRequest);
+    }
+
+    @DeleteMapping("/{productId}/component/{componentId}")
+    public ResponseEntity<Void> removeComponnet(
+            @PathVariable(value = "productId") Long productId,
+            @PathVariable(value = "componentId") Long componentId
+    ) {
+        return this.service.removeComponenet(productId, componentId);
     }
 }

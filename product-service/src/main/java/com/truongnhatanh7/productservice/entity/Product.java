@@ -25,11 +25,14 @@ public class Product extends BaseEntity {
     private Double unitCost;
     private Integer qty;
 
-    @ManyToMany(targetEntity = Product.class, mappedBy = "components")
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "t_product_component")
     @JsonIgnore
-    private Set<Product> parentProduct;
-
-    @ManyToMany(targetEntity = Product.class)
+    @EqualsAndHashCode.Exclude
     private Set<Product> components;
 
     @ManyToMany(fetch = FetchType.LAZY,
@@ -39,6 +42,21 @@ public class Product extends BaseEntity {
             })
     @EqualsAndHashCode.Exclude
     private Set<Category> categories;
+
+    public void addComponent(Product product) {
+        this.components.add(product);
+    }
+
+    public void removeComponent(Long componentId) {
+        Product component = this.components.stream()
+                .filter(c -> Objects.equals(c.getId(), componentId))
+                .findFirst()
+                .orElse(null);
+        if (component != null) {
+            this.components.remove(component);
+        }
+    }
+
 
     public void addCategory(Category category) {
         this.categories.add(category);
