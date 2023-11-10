@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends BaseRepository<Product, Long> {
-    @Query("SELECT parentProduct FROM Product p JOIN p.components components JOIN components.id parentProduct WHERE p.id = ?1")
+    @Query(value = "SELECT * FROM t_product p LEFT JOIN t_product_component pc ON pc.components_id=p.id WHERE pc.product_id=?1", nativeQuery = true)
     public List<Product> findComponentsById(Long productId);
 }
