@@ -6,13 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class MPORequest {
-//    private Long id;
-    private Collection<MPOLine> mpoLines;
+    private Boolean isApproved;
+    private LocalDate requestDate;
+    private LocalDate approveDate;
 }

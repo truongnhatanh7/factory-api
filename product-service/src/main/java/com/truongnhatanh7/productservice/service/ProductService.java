@@ -129,5 +129,27 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
         return this.productRepository.findComponentsById(productId);
     }
 
+    public void increaseQty(Long id, Integer requestQty) {
+        Product product = productRepository.findById(id)
+                .stream()
+                .findFirst()
+                .orElse(null);
+        if (product != null) {
+            product.setQty(product.getQty() + requestQty);
+            productRepository.save(product);
+        }
+    }
+
+    public void decreaseQty(Long id, Integer requestQty) {
+        Product product = productRepository.findById(id)
+                .stream()
+                .findFirst()
+                .orElse(null);
+        if (product != null && requestQty >= product.getQty()) {
+            product.setQty(product.getQty() - requestQty);
+            productRepository.save(product);
+        }
+    }
+
 
 }

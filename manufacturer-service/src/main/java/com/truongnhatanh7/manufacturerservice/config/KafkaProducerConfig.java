@@ -32,7 +32,7 @@ public class KafkaProducerConfig {
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 JsonSerializer.class);
         configProps.put(JsonSerializer.TYPE_MAPPINGS,
-                "getProductByIDEvent:com.truongnhatanh7.manufacturerservice.event.GetProductByIDEvent");
+                "approveMpoEvent:com.truongnhatanh7.manufacturerservice.event.ApproveMPOEvent");
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 

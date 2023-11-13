@@ -1,5 +1,6 @@
 package com.truongnhatanh7.manufacturerservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.truongnhatanh7.shared.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,10 +23,9 @@ public class MPOLine extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "mpo_id", nullable = false)
+    @JsonIgnore
     private MPO mpo;
 
+    private Long productId;
     private Integer requestQty;
-    private Boolean isApproved;
-    private LocalDate requestDate;
-    private LocalDate approveDate;
 }

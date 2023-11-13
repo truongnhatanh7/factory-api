@@ -3,12 +3,10 @@ package com.truongnhatanh7.manufacturerservice.entity;
 import com.truongnhatanh7.manufacturerservice.dto.request.MPOLineRequest;
 import com.truongnhatanh7.shared.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.apache.kafka.common.errors.ResourceNotFoundException;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -24,15 +22,17 @@ public class MPO extends BaseEntity {
     private Long id;
 
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "mpo")
+    @EqualsAndHashCode.Exclude
     private Collection<MPOLine> mpoLines;
+    private Boolean isApproved;
+    private LocalDate requestDate;
+    private LocalDate approveDate;
 
     public MPOLine addMpoLine(MPOLineRequest mpoLineRequest) {
         MPOLine mpoLine = MPOLine.builder()
                 .mpo(this)
+                .productId(mpoLineRequest.getProductId())
                 .requestQty(mpoLineRequest.getRequestQty())
-                .isApproved(mpoLineRequest.getIsApproved())
-                .requestDate(mpoLineRequest.getRequestDate())
-                .approveDate(mpoLineRequest.getApproveDate())
                 .build();
 
         this.mpoLines.add(mpoLine);

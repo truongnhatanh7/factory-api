@@ -1,5 +1,6 @@
 package com.truongnhatanh7.productservice.config;
 
+import com.truongnhatanh7.productservice.event.ApproveMPOEvent;
 import com.truongnhatanh7.productservice.event.GetProductByIDEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -34,7 +35,7 @@ public class KafkaConsumerConfig {
         typeMapper.setTypePrecedence(Jackson2JavaTypeMapper.TypePrecedence.TYPE_ID);
         typeMapper.addTrustedPackages("com.truongnhatanh7");
         Map<String, Class<?>> mappings = new HashMap<>();
-        mappings.put("getProductByIDEvent", GetProductByIDEvent.class);
+        mappings.put("approveMpoEvent", ApproveMPOEvent.class);
         typeMapper.setIdClassMapping(mappings);
         converter.setTypeMapper(typeMapper);
         return converter;

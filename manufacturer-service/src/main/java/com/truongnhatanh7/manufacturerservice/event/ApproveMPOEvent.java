@@ -1,6 +1,6 @@
-package com.truongnhatanh7.manufacturerservice.dto.response;
+package com.truongnhatanh7.manufacturerservice.event;
 
-import com.truongnhatanh7.manufacturerservice.entity.MPO;
+import com.truongnhatanh7.manufacturerservice.dto.request.MPOLineRequest;
 import com.truongnhatanh7.manufacturerservice.entity.MPOLine;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +13,6 @@ import java.util.Collection;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MPOResponse {
-    private Long id;
+public class ApproveMPOEvent {
+    private Collection<MPOLineRequest> mpoLines;
 }
