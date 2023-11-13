@@ -4,17 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad2aabff-66f4-47fe-ba44-2475a7498eae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    <list default="true" id="ad2aabff-66f4-47fe-ba44-2475a7498eae" name="Changes" comment="feat: add self referencing for component and product">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/ManufacturerServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/config/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/config/KafkaTopicConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/controller/MPOController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPOLineRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPORequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/response/MPOResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPOLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/event/GetProductByIDEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/model/ProductModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/repository/MPORepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/test/java/com/truongnhatanh7/manufacturerservice/ManufacturerServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/378c0174-7cff-4d22-a8ce-15647f5d674d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/378c0174-7cff-4d22-a8ce-15647f5d674d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +43,9 @@
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/manufacturer-service">
       <ProjectState />
     </projectState>
     <projectState path="$PROJECT_DIR$/product-service">
@@ -44,36 +67,74 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/product-service" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/manufacturer-service" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2XwdGetuYiBwe6AYJ1Bimxnqo7S" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "<unknown>",
     "jdk.selected.JAVA_MODULE": "corretto-17",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.SharedApplication">
+  <component name="RunManager" selected="Spring Boot.ManufacturerServiceApplication">
+    <configuration name="ManufacturerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="factory-api.manufacturer-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.truongnhatanh7.manufacturerservice.ManufacturerServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="factory-api.product-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.truongnhatanh7.productservice.ProductServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SharedApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="factory-api.shared.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.truongnhatanh7.shared.SharedApplication" />
@@ -88,6 +149,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="kafka deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.kafka deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -98,10 +177,26 @@
       <option name="presentableId" value="Default" />
       <updated>1699543987080</updated>
       <workItem from="1699543988382" duration="426000" />
+      <workItem from="1699614854365" duration="8095000" />
+      <workItem from="1699776996355" duration="15309000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add README.md">
+      <option name="closed" value="true" />
+      <created>1699618390095</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699618390095</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="feat: add README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add README.md" />
   </component>
 </project>

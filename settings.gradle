@@ -2,3 +2,4 @@ rootProject.name = 'factory-api'
 
 include 'shared'
 include 'product-service'
+include 'manufacturer-service'

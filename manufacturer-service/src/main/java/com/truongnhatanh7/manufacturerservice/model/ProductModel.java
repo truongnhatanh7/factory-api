@@ -1,20 +1,15 @@
-package com.truongnhatanh7.productservice.dto.response;
+package com.truongnhatanh7.manufacturerservice.model;
 
-import com.truongnhatanh7.productservice.entity.Category;
-import com.truongnhatanh7.productservice.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class ProductResponse {
-    private Long id;
+public class ProductModel {
     private String code;
     private String name;
     private String description;
