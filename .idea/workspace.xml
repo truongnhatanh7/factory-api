@@ -5,36 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2aabff-66f4-47fe-ba44-2475a7498eae" name="Changes" comment="feat: add self referencing for component and product">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/ManufacturerServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/config/KafkaProducerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/config/KafkaTopicConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/controller/MPOController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPOLineRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPORequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/response/MPOResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPOLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/event/GetProductByIDEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/model/ProductModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/repository/MPORepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/test/java/com/truongnhatanh7/manufacturerservice/ManufacturerServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/378c0174-7cff-4d22-a8ce-15647f5d674d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/378c0174-7cff-4d22-a8ce-15647f5d674d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/com/truongnhatanh7/shared/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/com/truongnhatanh7/shared/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/com/truongnhatanh7/shared/service/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/com/truongnhatanh7/shared/service/BaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/com/truongnhatanh7/shared/specifications/SpecificationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/com/truongnhatanh7/shared/specifications/SpecificationFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +49,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/manufacturer-service" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -102,7 +76,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "<unknown>",
+    "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "corretto-17",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -120,7 +94,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.ManufacturerServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ProductServiceApplication">
     <configuration name="ManufacturerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="factory-api.manufacturer-service.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.truongnhatanh7.manufacturerservice.ManufacturerServiceApplication" />
@@ -178,7 +152,7 @@
       <updated>1699543987080</updated>
       <workItem from="1699543988382" duration="426000" />
       <workItem from="1699614854365" duration="8095000" />
-      <workItem from="1699776996355" duration="15309000" />
+      <workItem from="1699776996355" duration="17298000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add README.md">
       <option name="closed" value="true" />

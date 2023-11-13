@@ -11,7 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -28,7 +30,8 @@ public abstract class BaseService<T extends BaseEntity, ID, TRequest, TResponse>
                           boolean desc,
                           String field,
                           String operator,
-                          String value
+                          String value,
+                          List<String> values
     ) {
 
         Pageable paging;
@@ -42,12 +45,21 @@ public abstract class BaseService<T extends BaseEntity, ID, TRequest, TResponse>
                             Sort.by(sortBy).descending()
                             : Sort.by(sortBy).ascending());
         }
-        if (field != null && operator != null && value != null) {
-            Filter filter = Filter.builder()
-                    .field(field)
-                    .operator(operator)
-                    .value(value)
-                    .build();
+        if (field != null && operator != null) {
+            if (values == null && value == null) {
+                throw new RuntimeException("bad request");
+            }
+            Filter filter = values == null ?
+                    Filter.builder()
+                        .field(field)
+                        .operator(operator)
+                        .value(value)
+                        .build() :
+                    Filter.builder()
+                        .field(field)
+                        .operator(operator)
+                        .values(values)
+                        .build();
             SpecificationFactory<T> specificationFactory = new SpecificationFactory<T>();
             Specification<T> spec = specificationFactory.create(filter);
             return repository.findAll(spec, paging);

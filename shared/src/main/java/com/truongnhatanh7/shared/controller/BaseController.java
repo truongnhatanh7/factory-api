@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 @AllArgsConstructor
 public abstract class BaseController<T extends BaseEntity, ID, TRequest, TResponse> {
@@ -21,9 +22,10 @@ public abstract class BaseController<T extends BaseEntity, ID, TRequest, TRespon
                           @RequestParam(name = "desc", required = false, defaultValue = "false") boolean desc,
                           @RequestParam(name = "field", required = false) String field,
                           @RequestParam(name = "operator", required = false) String operator,
-                          @RequestParam(name = "value", required = false) String value
+                          @RequestParam(name = "value", required = false) String value,
+                          @RequestParam(name = "values", required = false) List<String> values
                           ) {
-        return service.getAll(page, size, sortBy, desc, field, operator, value);
+        return service.getAll(page, size, sortBy, desc, field, operator, value, values);
     }
 
     @GetMapping("/find/{id}")

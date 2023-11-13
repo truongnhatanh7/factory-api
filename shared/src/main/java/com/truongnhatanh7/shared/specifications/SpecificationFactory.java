@@ -7,6 +7,9 @@ import jakarta.persistence.criteria.Root;
 import lombok.NonNull;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SpecificationFactory<T> {
     private Object castToRequiredType(Class<?> fieldType, String value) {
         if(fieldType.isAssignableFrom(Double.class)) {
@@ -21,6 +24,14 @@ public class SpecificationFactory<T> {
 
         return null;
     }
+
+    private Object castToRequiredType(Class<?> fieldType, List<String> value) {
+        List<Object> lists = new ArrayLaist<>();
+        for (String s : value) {
+            lists.add(castToRequiredType(fieldType, s));
+        }
+        return lists;
+    }
     public Specification<T> create(Filter filter) {
         switch (filter.getOperator()) {
             case FilterOperator.EQUALS:
@@ -30,8 +41,23 @@ public class SpecificationFactory<T> {
                                                  @NonNull CriteriaQuery<?> query,
                                                  @NonNull CriteriaBuilder criteriaBuilder) {
                         return criteriaBuilder.equal(root.get(filter.getField()),
-                                castToRequiredType((root.get(filter.getField()).getJavaType()),
+                                castToRequiredType((
+                                        root.get(filter.getField()).getJavaType()),
                                         filter.getValue()));
+                    }
+                };
+
+            case FilterOperator.IN:
+                return new Specification<T>() {
+                    @Override
+                    public Predicate toPredicate(@NonNull Root<T> root,
+                                                 @NonNull CriteriaQuery<?> query,
+                                                 @NonNull CriteriaBuilder criteriaBuilder) {
+                        return criteriaBuilder.in(root.get(filter.getField()))
+                                .value(castToRequiredType(
+                                        root.get(filter.getField()).getJavaType(),
+                                        filter.getValues()
+                                ));
                     }
                 };
 
