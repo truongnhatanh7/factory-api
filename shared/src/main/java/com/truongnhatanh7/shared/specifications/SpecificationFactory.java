@@ -26,7 +26,7 @@ public class SpecificationFactory<T> {
     }
 
     private Object castToRequiredType(Class<?> fieldType, List<String> value) {
-        List<Object> lists = new ArrayLaist<>();
+        List<Object> lists = new ArrayList<>();
         for (String s : value) {
             lists.add(castToRequiredType(fieldType, s));
         }
