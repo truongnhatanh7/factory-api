@@ -1,6 +1,7 @@
 package com.truongnhatanh7.manufacturerservice.dto.request;
 
 import com.truongnhatanh7.manufacturerservice.entity.MPOLine;
+import com.truongnhatanh7.manufacturerservice.entity.MPOStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.util.Collection;
 @AllArgsConstructor
 //@NoArgsConstructor
 public class MPORequest {
-    private Boolean isApproved;
+    private MPOStatus status;
     private LocalDate requestDate;
     private LocalDate approveDate;
 }

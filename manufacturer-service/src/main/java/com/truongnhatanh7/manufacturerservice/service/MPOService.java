@@ -5,6 +5,7 @@ import com.truongnhatanh7.manufacturerservice.dto.request.MPORequest;
 import com.truongnhatanh7.manufacturerservice.dto.response.MPOResponse;
 import com.truongnhatanh7.manufacturerservice.entity.MPO;
 import com.truongnhatanh7.manufacturerservice.entity.MPOLine;
+import com.truongnhatanh7.manufacturerservice.entity.MPOStatus;
 import com.truongnhatanh7.manufacturerservice.event.ApproveMPOEvent;
 import com.truongnhatanh7.manufacturerservice.event.GetProductByIDEvent;
 import com.truongnhatanh7.manufacturerservice.repository.MPORepository;
@@ -36,19 +37,30 @@ public class MPOService extends BaseService<MPO, Long, MPORequest, MPOResponse> 
         return MPO.builder()
                 .requestDate(mpoRequest.getRequestDate())
                 .approveDate(mpoRequest.getApproveDate())
-                .isApproved(mpoRequest.getIsApproved())
+                .status(mpoRequest.getStatus())
                 .build();
     }
 
     @Override
     public MPO mapPatchToOrm(MPORequest mpoRequest, MPO tInstance) {
-        return null;
+        return MPO.builder()
+                .requestDate(mpoRequest.getRequestDate() == null ?
+                        tInstance.getRequestDate() :
+                        mpoRequest.getRequestDate())
+                .approveDate(mpoRequest.getApproveDate() == null ?
+                        tInstance.getApproveDate() :
+                        mpoRequest.getApproveDate())
+                .status(mpoRequest.getStatus() == null ?
+                        tInstance.getStatus() :
+                        mpoRequest.getStatus())
+                .build();
     }
 
     @Override
     public MPOResponse mapOrmToResponse(MPO tInstance) {
         return MPOResponse.builder()
                 .id(tInstance.getId())
+                .status(tInstance.getStatus())
                 .build();
     }
     public ResponseEntity<MPOLine> addMPOLine(MPOLineRequest mpoLineRequest) {
@@ -67,12 +79,13 @@ public class MPOService extends BaseService<MPO, Long, MPORequest, MPOResponse> 
                 .stream().findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("not found"));
 
-        mpo.setIsApproved(true);
-        mpo.setApproveDate(LocalDate.now());
+        // After saga is completed -> mpo will be approved
+        mpo.setStatus(MPOStatus.PROCESSING);
         mpoRepository.save(mpo);
 
         kafkaTemplate.send("mpo.product.topic",
                 ApproveMPOEvent.builder()
+                        .mpoId(mpoId)
                         .mpoLines(mpo.getMpoLines().stream().map(l ->
                                 MPOLineRequest.builder()
                                         .mpoId(mpo.getId())
@@ -83,5 +96,13 @@ public class MPOService extends BaseService<MPO, Long, MPORequest, MPOResponse> 
                         .build());
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public void handleMpoRollback(Long mpoId) {
+        MPO mpo = mpoRepository.findById(mpoId)
+                .stream().findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("not found"));
+        mpo.setStatus(MPOStatus.ROLLBACK);
+        mpoRepository.save(mpo);
     }
 }

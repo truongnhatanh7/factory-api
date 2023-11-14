@@ -31,6 +31,7 @@ public class ProductListener {
                     .qty(mpoLineRequest.getRequestQty())
                     .build();
             productService.increaseQty(
+                    mpoLineRequest.getMpoId(),
                     mpoLineRequest.getProductId(),
                     mpoLineRequest.getRequestQty()
             );

@@ -24,7 +24,7 @@ public class MPO extends BaseEntity {
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "mpo")
     @EqualsAndHashCode.Exclude
     private Collection<MPOLine> mpoLines;
-    private Boolean isApproved;
+    private MPOStatus status;
     private LocalDate requestDate;
     private LocalDate approveDate;
 

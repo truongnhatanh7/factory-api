@@ -2,6 +2,7 @@ package com.truongnhatanh7.manufacturerservice.dto.response;
 
 import com.truongnhatanh7.manufacturerservice.entity.MPO;
 import com.truongnhatanh7.manufacturerservice.entity.MPOLine;
+import com.truongnhatanh7.manufacturerservice.entity.MPOStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,5 @@ import java.util.Collection;
 @NoArgsConstructor
 public class MPOResponse {
     private Long id;
+    private MPOStatus status;
 }

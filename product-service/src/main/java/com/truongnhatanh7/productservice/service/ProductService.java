@@ -6,25 +6,35 @@ import com.truongnhatanh7.productservice.dto.request.ProductRequest;
 import com.truongnhatanh7.productservice.dto.response.ProductResponse;
 import com.truongnhatanh7.productservice.entity.Category;
 import com.truongnhatanh7.productservice.entity.Product;
+import com.truongnhatanh7.productservice.event.RollbackProductEvent;
 import com.truongnhatanh7.productservice.repository.CategoryRepository;
 import com.truongnhatanh7.productservice.repository.ProductRepository;
 import com.truongnhatanh7.shared.service.BaseService;
 import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ProductService extends BaseService<Product, Long, ProductRequest, ProductResponse> {
     private CategoryRepository categoryRepository;
     private ProductRepository productRepository;
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
-    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
+    public ProductService(
+            ProductRepository productRepository,
+            CategoryRepository categoryRepository,
+            KafkaTemplate<String, Object> kafkaTemplate
+    ) {
         super(productRepository);
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @Override
@@ -129,25 +139,36 @@ public class ProductService extends BaseService<Product, Long, ProductRequest, P
         return this.productRepository.findComponentsById(productId);
     }
 
-    public void increaseQty(Long id, Integer requestQty) {
-        Product product = productRepository.findById(id)
-                .stream()
-                .findFirst()
-                .orElse(null);
-        if (product != null) {
-            product.setQty(product.getQty() + requestQty);
-            productRepository.save(product);
+    @Transactional(rollbackFor = {Exception.class, Throwable.class})
+    public void increaseQty(Long mpoId, Long productId, Integer requestQty) {
+        try {
+            Product product = productRepository.findById(productId)
+                    .stream()
+                    .findFirst()
+                    .orElse(null);
+            if (product != null) {
+                product.setQty(product.getQty() + requestQty);
+                productRepository.save(product);
+            }
+        } catch (Exception e) {
+            kafkaTemplate.send("rollback.product", new RollbackProductEvent(mpoId));
         }
+
     }
 
-    public void decreaseQty(Long id, Integer requestQty) {
-        Product product = productRepository.findById(id)
-                .stream()
-                .findFirst()
-                .orElse(null);
-        if (product != null && requestQty >= product.getQty()) {
-            product.setQty(product.getQty() - requestQty);
-            productRepository.save(product);
+    @Transactional(rollbackFor = {Exception.class, Throwable.class})
+    public void decreaseQty(Long moId, Long id, Integer requestQty) {
+        try {
+            Product product = productRepository.findById(id)
+                    .stream()
+                    .findFirst()
+                    .orElse(null);
+            if (product != null && requestQty >= product.getQty()) {
+                product.setQty(product.getQty() - requestQty);
+                productRepository.save(product);
+            }
+        } catch (Exception e) {
+            kafkaTemplate.send("rollback.product", new RollbackProductEvent(moId));
         }
     }
 

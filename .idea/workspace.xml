@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad2aabff-66f4-47fe-ba44-2475a7498eae" name="Changes" comment="feat: add self referencing for component and product">
-      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/event/ApproveMPOEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPOStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPOStatusConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/event/RollbackProductEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/listener/MPOListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/config/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/controller/MPOController.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/controller/MPOController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPOLineRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPOLineRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPORequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/request/MPORequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/response/MPOResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/dto/response/MPOResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPOLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/entity/MPOLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/event/ApproveMPOEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/event/ApproveMPOEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" beforeDir="false" afterPath="$PROJECT_DIR$/manufacturer-service/manufacturer-service/src/main/java/com/truongnhatanh7/manufacturerservice/service/MPOService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +108,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProductServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ManufacturerServiceApplication">
     <configuration name="ManufacturerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="factory-api.manufacturer-service.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.truongnhatanh7.manufacturerservice.ManufacturerServiceApplication" />
@@ -167,7 +166,7 @@
       <updated>1699543987080</updated>
       <workItem from="1699543988382" duration="426000" />
       <workItem from="1699614854365" duration="8095000" />
-      <workItem from="1699776996355" duration="25625000" />
+      <workItem from="1699776996355" duration="32020000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add README.md">
       <option name="closed" value="true" />

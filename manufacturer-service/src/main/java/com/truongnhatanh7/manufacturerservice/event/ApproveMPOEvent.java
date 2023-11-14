@@ -14,5 +14,6 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ApproveMPOEvent {
+    private Long mpoId;
     private Collection<MPOLineRequest> mpoLines;
 }
